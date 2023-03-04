@@ -10,7 +10,7 @@ const getParseContactsPath = async (path) => {
 
 const listContacts = async () => {
   try {
-    const parseData = getParseContactsPath(contactsPath);
+    const parseData = await getParseContactsPath(contactsPath);
     console.table(parseData);
   } catch (error) {
     console.log(error);
@@ -19,7 +19,7 @@ const listContacts = async () => {
 
 const getContactById = async (contactId) => {
   try {
-    const parseData = getParseContactsPath(contactsPath);
+    const parseData = await getParseContactsPath(contactsPath);
     const findContact = parseData.find((item) => item.id === contactId);
     console.table(findContact);
   } catch (error) {
@@ -29,7 +29,7 @@ const getContactById = async (contactId) => {
 
 const removeContact = async (contactId) => {
   try {
-    const parseData = getParseContactsPath(contactsPath);
+    const parseData = await getParseContactsPath(contactsPath);
     const deleteContact = parseData.filter((item) => item.id !== contactId);
     console.table(deleteContact);
   } catch (error) {
@@ -39,7 +39,7 @@ const removeContact = async (contactId) => {
 
 const addContact = async (name, email, phone) => {
   try {
-    const parseData = getParseContactsPath(contactsPath);
+    const parseData = await getParseContactsPath(contactsPath);
     const newContact = {
       id: `${parseData.length + 1}`,
       name,
