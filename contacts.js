@@ -32,6 +32,7 @@ const removeContact = async (contactId) => {
     const parseData = await getParseContactsPath(contactsPath);
     const deleteContact = parseData.filter((item) => item.id !== contactId);
     console.table(deleteContact);
+    return await fs.writeFile(contactsPath, JSON.stringify(deleteContact));
   } catch (error) {
     console.log(error);
   }
